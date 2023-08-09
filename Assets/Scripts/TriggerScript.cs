@@ -4,22 +4,26 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TriggerScript : MonoBehaviour
+namespace Paris
 {
-    // Now, trigger
-
-    private void OnTriggerEnter(Collider other)
+    public class TriggerScript : MonoBehaviour
     {
-        Debug.Log("I have been triggered !");
+        // Now, trigger
 
-        // show text ig
+        private void OnTriggerEnter(Collider other)
+        {
+            Debug.Log("I have been triggered !");
 
-        textBox.enabled = true;
+            // show text ig
 
-        // Restart scene
+            textBox.enabled = true;
 
-        UnityEngine.SceneManagement.SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            // Restart scene
+
+            UnityEngine.SceneManagement.SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        [SerializeField] private TextMeshPro textBox;
     }
 
-    [SerializeField] private TextMeshPro textBox;
 }

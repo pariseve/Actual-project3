@@ -4,40 +4,44 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ImpactTester : MonoBehaviour
-
+namespace Paris
 {
-    // Want this script to handle COLLISION + TRIGGER detection
-    // When object impacts another, print text
+    public class ImpactTester : MonoBehaviour
 
-    // First, collision
-
-    private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Oopsie I have collided !");
+        // Want this script to handle COLLISION + TRIGGER detection
+        // When object impacts another, print text
 
-        // Destroy Cube + Sphere!!!
+        // First, collision
 
-        Destroy(gameObject);
+        private void OnCollisionEnter(Collision collision)
+        {
+            Debug.Log("Oopsie I have collided !");
 
-        // This would destroy the ground instead
-        //Destroy(collision.gameObject);
+            // Destroy Cube + Sphere!!!
+
+            Destroy(gameObject);
+
+            // This would destroy the ground instead
+            //Destroy(collision.gameObject);
+        }
+
+        // Now, trigger
+
+        private void OnTriggerEnter(Collider other)
+        {
+            Debug.Log("I have been triggered !");
+
+            // show text ig
+
+            textBox.enabled = true;
+
+            // Restart scene
+
+            UnityEngine.SceneManagement.SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        [SerializeField] private TextMeshPro textBox;
     }
-
-    // Now, trigger
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("I have been triggered !");
-
-        // show text ig
-
-        textBox.enabled = true;
-
-        // Restart scene
-
-        UnityEngine.SceneManagement.SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
-    [SerializeField] private TextMeshPro textBox;
 }
+
