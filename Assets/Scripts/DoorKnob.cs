@@ -28,6 +28,11 @@ public class DoorKnob : MonoBehaviour
             //show text
             doorText.enabled = true;
             isPlayerCharacterNextToDoor = true;
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Vector3 transformRotation = new Vector3(0f, 90f, 0f);
+                doorText.enabled = false;
+            }
         }
 
     }
