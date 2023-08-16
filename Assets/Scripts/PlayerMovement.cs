@@ -38,6 +38,10 @@ namespace Paris
         public float jumpHeight = 2f;
 
 
+        [SerializeField] private AudioSource playerAudio;
+        [SerializeField] private AudioClip jumpSound;
+
+
         private void Start()
         {
             // If the variable "controller" is empty...
@@ -62,6 +66,8 @@ namespace Paris
               if (Input.GetButtonDown("Jump") && isGrounded)
               {
                   velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
+                // play sound when player jumps
+                playerAudio.PlayOneShot(jumpSound);
               }
 
              // Rotate the player based off those mouse values we collected earlier

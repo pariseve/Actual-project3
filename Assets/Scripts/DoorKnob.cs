@@ -7,14 +7,29 @@ public class DoorKnob : MonoBehaviour
 {
     [SerializeField] private TextMeshPro doorText;
     [SerializeField] private bool isPlayerCharacterNextToDoor = false;
+    [SerializeField] GameObject actualDoor;
+    [SerializeField] private bool isDoorOpen = false;
     // when player character hits object, show tutorial
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && isPlayerCharacterNextToDoor)
         {
-            Debug.Log("Door has opened.");
-            doorText.enabled = false;
+            if (!isDoorOpen)
+            {
+                Debug.Log("Door has opened.");
+                doorText.enabled = false;
+                //makes door rotate on y axis
+                actualDoor.transform.Rotate(Vector3.up, 90f);
+                isDoorOpen = true;
+            }
+            else
+            {
+                Debug.Log("Door has closed.");
+                doorText.enabled = false;
+                actualDoor.transform.Rotate(Vector3.up, -90f);
+                isDoorOpen = false;
+            }
 
         }
     }
